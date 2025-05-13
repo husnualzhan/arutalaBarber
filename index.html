@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="id" x-data="navColor()">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Arutala barbershop adalah salah satu barbershop kekinian yang wajib kamu datang untuk mengupgrade style kamu biar makin stylize "
+    />
+    <meta http-equiv="Content-Language" content="id" />
+    <meta name="Author" content="LonglastingProjects" />
+    <title>Landing Page</title>
+    <link rel="icon" type="image/x-icon" href="./img/logo.png" />
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/relativeTime.js"></script>
+    <script src="./script.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+
+    <script
+      src="https://kit.fontawesome.com/26d8d3b5e2.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="antialiased scroll-smooth bg-[#F8F8F8]">
+    <div class="relative">
+      <nav
+        x-data="{
+        menuOpen: false,
+        scrolled: false,
+        active: 'home',
+        lastScroll: window.pageYOffset,
+        init() {
+          window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            this.scrolled = currentScroll > 600;
+          });
+        }
+      }"
+        x-init="init()"
+        :class="[
+        scrolled ? 'bg-black transition-all duration-300 ease-in-out' : 'bg-transparent'
+      ]"
+        class="w-full fixed top-0 left-0 right-0 z-50 transform transition-transform duration-300 ease-in-out"
+      >
+        <div
+          class="max-w-screen-xl mx-auto relative flex items-center justify-between p-4"
+        >
+          <!-- Mobile menu button -->
+          <button
+            @click="menuOpen = !menuOpen"
+            class="md:hidden text-[#F8F8F8] inline-flex items-center w-10 h-10 justify-center rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-200"
+          >
+            <template x-if="!menuOpen">
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </template>
+            <template x-if="menuOpen">
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </template>
+          </button>
+
+          <!-- Logo centered -->
+          <a
+            href="#home"
+            @click.prevent="active='home'; scrollTo('home')"
+            class="max-md:basis-[100%] justify-center flex items-center space-x-2"
+          >
+            <img src="./img/logo.png" class="h-16 md:h-24" alt="Logo" />
+            <div class="flex flex-col text-[#F8F8F8]">
+              <span
+                class="text-2xl md:text-4xl dm-serif-text-regular leading-tight"
+                >ARUTALA</span
+              >
+              <span
+                class="md:tracking-wider text-sm md:text-lg font-semibold uppercase"
+                >Barbershop</span
+              >
+            </div>
+          </a>
+
+          <!-- Desktop menu -->
+          <ul
+            class="hidden md:flex uppercase space-x-3 font-medium roboto text-[#F8F8F8]"
+          >
+            <li>
+              <a
+                href="#services"
+                @click.prevent="active='services'; scrollTo('services')"
+                :class="(active==='services' ? 'text-[#D5A021] font-semibold' : '') + ' hover:text-[#D5A021] hover:font-semibold px-3 py-2 rounded transition-colors duration-200'"
+                >Services</a
+              >
+            </li>
+            <li>
+              <a
+                href="#produk"
+                @click.prevent="active='produk'; scrollTo('produk')"
+                :class="(active==='produk' ? 'text-[#D5A021] font-semibold' : '') + ' hover:text-[#D5A021] hover:font-semibold px-3 py-2 rounded transition-colors duration-200'"
+                >Produk</a
+              >
+            </li>
+            <li>
+              <a
+                href="#artikel"
+                @click.prevent="active='artikel'; scrollTo('artikel')"
+                :class="(active==='artikel' ? 'text-[#D5A021] font-semibold' : '') + ' hover:text-[#D5A021] hover:font-semibold px-3 py-2 rounded transition-colors duration-200'"
+                >Artikel</a
+              >
+            </li>
+            <li>
+              <a
+                href="#akademi"
+                @click.prevent="active='akademi'; scrollTo('akademi')"
+                :class="(active==='akademi' ? 'text-[#D5A021] font-semibold' : '') + ' hover:text-[#D5A021] hover:font-semibold px-3 py-2 rounded transition-colors duration-200'"
+                >akademi</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Mobile dropdown menu -->
+        <div
+          x-show="menuOpen"
+          x-transition:enter="transition ease-out duration-300"
+          x-transition:enter-start="opacity-0 transform -translate-y-2"
+          x-transition:enter-end="opacity-100 transform translate-y-0"
+          x-transition:leave="transition ease-in duration-200"
+          x-transition:leave-start="opacity-100 transform translate-y-0"
+          x-transition:leave-end="opacity-0 transform -translate-y-2"
+          class="md:hidden bg-[#252627] text-[#F8F8F8] uppercase font-medium roboto origin-top"
+        >
+          <ul class="flex flex-col space-y-2 p-4">
+            <li>
+              <a
+                href="#services"
+                @click="menuOpen=false; active='services'; scrollTo('services')"
+                :class="(active==='services' ? 'bg-[#D5A021] text-black' : '') + ' block px-4 py-2 rounded hover:bg-[#D5A021] hover:text-black transition-colors duration-200'"
+                >Services</a
+              >
+            </li>
+            <li>
+              <a
+                href="#produk"
+                @click="menuOpen=false; active='produk'; scrollTo('produk')"
+                :class="(active==='produk' ? 'bg-[#D5A021] text-black' : '') + ' block px-4 py-2 rounded hover:bg-[#D5A021] hover:text-black transition-colors duration-200'"
+                >Produk</a
+              >
+            </li>
+            <li>
+              <a
+                href="#artikel"
+                @click="menuOpen=false; active='artikel'; scrollTo('artikel')"
+                :class="(active==='artikel' ? 'bg-[#D5A021] text-black' : '') + ' block px-4 py-2 rounded hover:bg-[#D5A021] hover:text-black transition-colors duration-200'"
+                >Artikel</a
+              >
+            </li>
+            <li>
+              <a
+                href="#akademi"
+                @click="menuOpen=false; active='akademi'; scrollTo('akademi')"
+                :class="(active==='akademi' ? 'bg-[#D5A021] text-black' : '') + ' block px-4 py-2 rounded hover:bg-[#D5A021] hover:text-black transition-colors duration-200'"
+                >akademi</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <header
+        id="home"
+        x-data="{
+        currentSlide: 0,
+        slides: [
+          './img/1.png',
+          './img/2.png',
+          './img/3.png',
+          './img/4.png',
+          './img/5.png',
+          
+        ],
+        init() {
+          setInterval(() => {
+            this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+          }, 10000);
+        }
+      }"
+        x-init="init"
+        class="relative h-screen overflow-visible"
+        id="Services"
+      >
+        <div
+          class="relative z-20 max-w-screen-xl mx-auto h-full flex flex-col items-start justify-center text-[#F8F8F8] px-8 roboto text-left"
+        >
+          <h1
+            class="text-3xl md:text-6xl uppercase font-bold text-pretty text-balance w-fit max-w-[30ch] mb-4 md:mb-6"
+          >
+            Tampil Ganteng Bukan Pilihan Tapi
+            <span class="text-[#D5A021]">Kebutuhan.</span>
+          </h1>
+          <p
+            class="text-md xl:text-xl font-medium w-fit text-pretty max-w-[80dvw] md:max-w-[60svw] xl:max-w-[70ch] mb-8 md:mb-12"
+          >
+            Disini, potongan rapi dan gaya modern bersatu. Rasakan sensasi cukur
+            premium dengan barbershop terbaik di kota dengan Harga Bersahabat
+          </p>
+          <div
+            x-data="dropdown()"
+            class="relative inline-block text-left w-full max-w-xs md:max-w-sm lg:max-w-md"
+          >
+            <!-- Toggle Button -->
+            <button
+              @click="open = !open"
+              :class="open ? 'bg-orange-700' : 'bg-[#D5A021]'"
+              class="w-full flex justify-between items-center gap-2 text-white font-semibold uppercase text-sm sm:text-md md:text-lg px-4 py-3 rounded-2xl transition duration-300 ease-in-out hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+            >
+              <span
+                x-text="open ? 'klik untuk minimize' : 'lihat lokasi tersedia'"
+              ></span>
+              <i
+                :class="open ? 'fa-solid fa-minus' : 'fa-solid fa-magnifying-glass'"
+                class="transition-transform duration-300"
+              ></i>
+            </button>
+
+            <!-- Floating Dropdown -->
+            <div
+              x-show="open"
+              @click.away="open = false"
+              x-transition:enter="transition origin-top-left ease-out duration-200"
+              x-transition:enter-start="opacity-0 translate-y-2"
+              x-transition:enter-end="opacity-100 translate-y-0"
+              x-transition:leave="transition origin-top-left ease-in duration-150"
+              x-transition:leave-start="opacity-100 translate-y-0"
+              x-transition:leave-end="opacity-0 translate-y-2"
+              class="absolute left-0 mt-4 w-full sm:w-80 md:w-96 bg-gray-800 text-white border border-gray-700 rounded-xl shadow-xl z-30 overflow-hidden flex flex-col p-2"
+              style="display: none"
+            >
+              <!-- Search Input -->
+              <div class="px-2 pb-2">
+                <input
+                  x-model="search"
+                  type="text"
+                  placeholder="Cari lokasi..."
+                  class="w-full px-3 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+                />
+              </div>
+
+              <!-- Region Tabs Slider -->
+              <div class="px-2 pb-2">
+                <div class="flex space-x-2 overflow-x-auto">
+                  <template x-for="region in regions" :key="region">
+                    <button
+                      @click="selectRegion(region)"
+                      :class="selectedRegion === region ? 'bg-orange-600 text-white' : 'bg-gray-700 text-gray-300'"
+                      class="whitespace-nowrap px-3 py-1 rounded-full text-xs sm:text-sm font-medium flex-shrink-0 transition"
+                    >
+                      <span x-text="region"></span>
+                    </button>
+                  </template>
+                </div>
+              </div>
+
+              <!-- Locations List -->
+              <div class="flex-1 overflow-y-auto">
+                <template x-for="loc in paginatedLocations()" :key="loc.name">
+                  <a
+                    :href="`https://maps.google.com/?q=${encodeURIComponent(loc.name)}`"
+                    target="_blank"
+                    class="flex items-center gap-2 px-4 py-2 hover:bg-gray-700 transition-colors whitespace-nowrap text-sm sm:text-base"
+                  >
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span x-text="loc.name"></span>
+                  </a>
+                </template>
+                <div
+                  x-show="filteredLocations().length === 0"
+                  class="p-4 text-center text-gray-400 text-sm"
+                >
+                  Tidak ada lokasi ditemukan.
+                </div>
+              </div>
+
+              <!-- Pagination Controls -->
+              <div
+                class="flex items-center justify-between px-4 py-2 bg-gray-700"
+              >
+                <button
+                  @click="prevPage()"
+                  :disabled="page === 1"
+                  class="px-2 py-1 rounded disabled:opacity-50"
+                >
+                  Prev
+                </button>
+                <span class="text-sm/5"
+                  >Page <span x-text="page"></span> /
+                  <span x-text="totalPages"></span
+                ></span>
+                <button
+                  @click="nextPage()"
+                  :disabled="page === totalPages"
+                  class="px-2 py-1 rounded disabled:opacity-50"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Mask -->
+        <div class="absolute inset-0 z-10 pointer-events-none mask-gradient">
+          <template x-for="(slide, index) in slides" :key="index">
+            <div
+              x-show="currentSlide === index"
+              class="absolute inset-0 transition-opacity duration-700"
+              x-transition:enter="opacity-0"
+              x-transition:enter-end="opacity-100"
+              x-transition:leave="opacity-100"
+              x-transition:leave-end="opacity-0"
+            >
+              <img :src="slide" class="w-full h-full object-cover" />
+            </div>
+          </template>
+
+          <!-- Overlay content -->
+          <div class="absolute inset-0 z-10 bg-black bg-opacity-40"></div>
+
+          <!-- <h1 class="text-4xl md:text-6xl font-extrabold uppercase mb-4">
+            Tampil Ganteng Setiap Saat
+          </h1>
+          <p class="text-lg mb-6">Potongan terbaik untuk gaya hidup modern</p>
+          <a
+            href=""
+            class="bg-blue-600 hover:bg-blue-700 px-6 py-2 text-white"
+          >
+            Booking Sekarang
+          </a> -->
+        </div>
+      </header>
+    </div>
+    <main
+      class="max-w-full flex flex-col relative text-[#252627] box-border overflow-hidden"
+    >
+      <section
+        class="w-full min-h-screen flex justify-center flex-col overflow-hidden pt-32 px-6 text-center roboto"
+        id="services"
+      >
+        <div class="max-w-4xl mx-auto mb-8">
+          <h2 class="uppercase font-extrabold text-3xl md:text-4xl mb-8">
+            Layanan Kami
+          </h2>
+          <p
+            class="text-base md:text-lg text-[#564E58] font-medium mb-8 text-balance"
+          >
+            Silahkan pilih layanan sesuai dengan yang diinginkan dan silahkan
+            pilih hair artis yang kalian pilih
+          </p>
+        </div>
+        <div class="flex flex-wrap justify-evenly mx-auto w-[80dvw] gap-8">
+          <div
+            class="hover:scale-105 hover:shadow-[#DB5461] hover:origin-center hover:-rotate-[5deg] duration-100 ease-in transition-all group hover:shadow-xl h-32 w-32 md:h-48 md:w-48 rounded-2xl overflow-hidden border border-[#252627] flex flex-col gap-8 shadow-sm relative"
+          >
+            <p
+              class="text-xl dm-serif-text-regular uppercase z-10 relative bg-[#564E58] text-[#F8F8F8] p-1 block"
+            >
+              HairStyling
+            </p>
+            <img
+              src="./img/10 warna.jpg"
+              class="group-hover:scale-110 h-full w-full object-cover absolute"
+              alt=""
+            />
+          </div>
+
+          <div
+            class="hover:scale-105 hover:shadow-[#3772FF] hover:origin-center hover:-rotate-[5deg] duration-100 ease-in transition-all group hover:shadow-xl h-32 w-32 md:h-48 md:w-48 rounded-2xl overflow-hidden border border-[#252627] flex flex-col gap-8 shadow-sm relative"
+          >
+            <p
+              class="text-xl dm-serif-text-regular uppercase z-10 relative bg-[#564E58] text-[#F8F8F8] p-1 block"
+            >
+              HAIRCUT
+            </p>
+            <img
+              src="./img/5 warna.jpg"
+              class="group-hover:scale-110 h-full w-full object-cover absolute"
+              alt=""
+            />
+          </div>
+
+          <div
+            class="hover:scale-105 hover:shadow-[#D5A021] hover:origin-center hover:-rotate-[5deg] duration-100 ease-in transition-all group hover:shadow-xl h-32 w-32 md:h-48 md:w-48 rounded-2xl overflow-hidden border border-[#252627] flex flex-col gap-8 shadow-sm relative"
+          >
+            <p
+              class="text-xl dm-serif-text-regular uppercase z-10 relative bg-[#564E58] text-[#F8F8F8] p-1 block"
+            >
+              hairwash
+            </p>
+            <img
+              src="./img/7 warna.jpg"
+              class="group-hover:scale-110 h-full w-full object-cover absolute"
+              alt=""
+            />
+          </div>
+        </div>
+      </section>
+      <section
+        class="w-full flex flex-col justify-center min-h-screen overflow-hidden mt-16 text-center roboto bg-[#252627] relative overflow-hidden"
+        id="about"
+      >
+        <img
+          src="./img/barbercuy.svg"
+          alt=""
+          class="hidden xl:block absolute top-0 left-0 right-0 right-0 bottom-0 object-cover h-full w-full"
+        />
+        <div
+          class="container xl:w-[80dvw] flex justify-start xl:justify-evenly mx-auto items-center flex-col xl:flex-row relative z-10 xl:shadow-[#DB5461] xl:shadow-xl py-8 gap-6 px-6 xl:bg-[#f8f8f8] max-xl:text-[#f8f8f8]"
+        >
+          <div
+            class="max-xl:max-h-[200px] xl:basis-[30%] rounded-2xl overflow-hidden"
+          >
+            <img src="./img/11 warna.jpg" class="object-cover" alt="" />
+          </div>
+          <div class="xl:basis-[50%] text-left">
+            <h2
+              class="text-3xl xl:text-5xl xl:max-w-[50%] dm-serif-text-regular mb-8 max-xl:my-6"
+            >
+              ARUTALA BARBERSHOP
+            </h2>
+            <p
+              class="roboto text-md xl:text-xl font-medium xl:indent-4 leading-[1.5] xl:leading-[1.8 ] text-balance w-fit"
+            >
+              <span class="font-bold text-[#D5A021]">Arutala</span> merupakan
+              perusahaan barbershop terkemuka yang telah mengukir reputasi
+              sebagai pionir dalam dunia perawatan rambut pria di Makassar dan
+              sekitarnya. Dengan jaringan yang kokoh berupa 15 cabang di seluruh
+              kota Makassar dan satu cabang strategis di Kabupaten Gowa, Arutala
+              menunjukkan komitmen kuat untuk menghadirkan layanan profesional
+              serta pengalaman grooming yang berbeda dari yang lain.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section
+        id="produk"
+        class="min-h-screen py-28 xl:pt-32 overflow-hidden justify-center roboto text-lg roboto text-[#252627]"
+      >
+        <h2
+          class="uppercase font-extrabold text-3xl my-8 md:text-4xl text-center"
+        >
+          Produk
+        </h2>
+        <div x-data="productSlider()" class="mx-auto max-w-3xl">
+          <template x-if="products.length <= 3">
+            <div class="space-x-6 flex w-3xl overflow-x-auto snap-mandatory">
+              <template x-for="product in products" :key="product.id">
+                <a
+                  :href="product.link"
+                  target="_blank"
+                  rel="noopener"
+                  class="snap-start min-w-52 bg-white border border-gray-200 rounded-2xl shadow-sm transform hover:-translate-y-1 hover:shadow-lg transition duration-300 cursor-pointer flex flex-col"
+                >
+                  <div class="relative">
+                    <div class="absolute z-10 ml-2 mt-2">
+                      <span
+                        class="text-xs font-bold text-white bg-gray-600 py-1 px-2 rounded-2xl"
+                        x-text="product.badge"
+                        :class="!product.badge ? 'hidden' : 'block'"
+                      ></span>
+                    </div>
+                    <div class="aspect-w-1 aspect-h-1">
+                      <img
+                        :src="product.image"
+                        :alt="product.name"
+                        class="w-full h-full object-cover rounded-t-2xl"
+                      />
+                    </div>
+                  </div>
+                  <!-- Info -->
+                  <div class="p-3 flex-1 flex flex-col">
+                    <h3
+                      x-text="product.name"
+                      class="text-md font-semibold mb-2 line-clamp-2"
+                    ></h3>
+                    <p
+                      x-text="product.desc"
+                      class="text-sm text-gray-800 font-thin line-clamp-3 flex-1"
+                    ></p>
+                    <!-- Harga -->
+                    <div class="mt-6">
+                      <template x-if="product.isDiskon">
+                        <div class="flex flex-col">
+                          <span class="text-xs">
+                            <span
+                              class="line-through text-gray-500"
+                              x-text="`Rp ${product.price.toLocaleString()}`"
+                            ></span>
+                          </span>
+                          <div
+                            class="font-bold"
+                            x-text="`Rp ${Math.round(product.price * (1 - product.diskon / 100)).toLocaleString()}`"
+                          ></div>
+                        </div>
+                      </template>
+                      <template x-if="!product.isDiskon">
+                        <div class="flex">
+                          <span
+                            class="font-bold text-gray-900"
+                            x-text="`Rp ${product.price.toLocaleString()}`"
+                          ></span>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </a>
+              </template>
+            </div>
+            <!-- Badge & Image -->
+          </template>
+        </div>
+      </section>
+      <section
+        class="bg-black px-8 pt-28 xl:pt-48 pb-32 md:px-10 relative z-10"
+        id="artikel"
+      >
+        <div class="w-[80dvw] mx-auto px-8">
+          <h2 class="text-3xl font-bold mb-4 text-center text-[#f8f8f8]">
+            Artikel Terbaru
+          </h2>
+          <div
+            x-data="carousel('articles.json')"
+            x-init="init()"
+            class="w-full"
+          >
+            <div class="relative">
+              <!-- carousel container with items-stretch to equalize card heights -->
+              <div
+                x-ref="carousel"
+                class="flex items-stretch space-x-4 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth"
+              >
+                <!-- cards -->
+                <template x-for="card in cards" :key="card.link">
+                  <div
+                    x-transition:enter="transition transform duration-500 ease-out"
+                    x-transition:enter-start="opacity-0 scale-90"
+                    x-transition:enter-end="opacity-100 scale-100"
+                    class="bg-[#252627] no-scrollbar text-[#f8f8f8] rounded-2xl shadow p-4 flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 snap-start transform transition-transform duration-300 ease-in-out hover:scale-105 flex flex-col max-h-full"
+                  >
+                    <div class="relative">
+                      <img
+                        :src="card.image"
+                        alt=""
+                        class="rounded-t-xl w-full h-48 object-cover"
+                      />
+                      <template x-if="showBadge(card)">
+                        <span
+                          class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full"
+                          >Baru</span
+                        >
+                      </template>
+                    </div>
+                    <!-- content wrapper ensures consistent spacing -->
+                    <div class="flex-1 flex flex-col mt-3">
+                      <h3
+                        class="font-semibold text-lg line-clamp-2 text-balance flex-auto"
+                        x-text="card.title"
+                      ></h3>
+                      <p
+                        class="text-xs text-gray-500 mt-1 flex-0"
+                        x-text="relativeTime(card.published)"
+                      ></p>
+                      <div class="mt-auto">
+                        <a
+                          :href="card.link"
+                          class="text-blue-600 text-sm inline-block"
+                          >Baca selengkapnya</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </template>
+              </div>
+
+              <!-- controls -->
+              <template x-if="cards>3">
+                <button
+                  @click="$refs.carousel.scrollBy({ left: -$refs.carousel.clientWidth, behavior: 'smooth' })"
+                  class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 transition"
+                >
+                  &larr;
+                </button>
+                <button
+                  @click="$refs.carousel.scrollBy({ left: $refs.carousel.clientWidth, behavior: 'smooth' })"
+                  class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 transition"
+                >
+                  &rarr;
+                </button>
+              </template>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer
+      class="w-full relative bg-cover bg-center"
+      style="background-image: url('img/4.png')"
+    >
+      <!-- Gradient overlay kiri→tengah→kanan -->
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-black/80 via-transparent to-black/80"
+      ></div>
+
+      <!-- Konten footer -->
+      <div
+        class="relative z-10 max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8 text-white"
+      >
+        <!-- Copyright -->
+        <div class="mt-10 border-t border-white/30 pt-4 text-sm text-center">
+          &copy; 2025 BarberShop Name. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

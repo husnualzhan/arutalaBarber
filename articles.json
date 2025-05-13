@@ -1,0 +1,15 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Tren Gaya Rambut Pria 2025: Fade Lebih Modern",
+      "author": "Accang",
+      "published": "2025-05-11",
+      "summary": "Membedah tren fade terbaru yang memadukan potongan klasik dengan sentuhan modern, cocok untuk pria urban.",
+      "content": "<p>Pada tahun 2025, potongan <em>fade</em> mengalami evolusi dengan teknik blending yang lebih halus dan tekstur rambut yang natural. Barbershop professional kini menggunakan pisau tondol digital untuk mencapai garis yang presisi dan fade yang seamless...</p>",
+      "image": "./img/1 warna.jpg",
+      "tags": ["fade", "gaya rambut", "2025", "barbershop"],
+      "link": "article.html"
+    }
+  ]
+}

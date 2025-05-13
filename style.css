@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+.dm-serif-text-regular {
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dm-serif-text-regular-italic {
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.roboto-<uniquifier > {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.mask-gradient {
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+.fade-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+}
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.animate-scroll-right {
+  animation: scroll-right 20s linear infinite;
+}
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-scroll-left {
+  animation: scroll-left 20s linear infinite;
+}
+.pause {
+  animation-play-state: paused !important;
+}
+.touch-manipulation {
+  touch-action: manipulation;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+html {
+  --warnadark: #252627;
+  --warnadarkalt: #564e58;
+  --warnawhite: #f8f8f8;
+
+  --warnared: #db5461;
+  --warnablue: #3772ff;
+  --warnayellow: #d5a021;
+}
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Adjust width */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f3f4f6; /* Light gray background */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #9ca3af; /* Gray handle */
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #4b5563; /* Darker gray on hover */
+}
