@@ -144,7 +144,7 @@ function productSlider() {
         diskon: 10,
         price: 450000,
         link: "www.google.com/",
-        image: "/img/1 warna.jpg",
+        image: "./img/1 warna.jpg",
       },
       {
         id: 2,
@@ -155,7 +155,7 @@ function productSlider() {
         diskon: 0,
         link: "www.google.com/",
         price: 175000,
-        image: "/img/4 warna.jpg",
+        image: "./img/4 warna.jpg",
       },
       {
         id: 3,
@@ -197,7 +197,7 @@ function breadcrumb() {
       {
         label: "Home",
         href: "#",
-        icon: '<path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />',
+        icon: 'fa-solid fa-house text-xl text-xs xl:text-sm',
       },
       { label: "Projects", href: "#", current: false },
       { label: "Flowbite", href: "#", current: true },
